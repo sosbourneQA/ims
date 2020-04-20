@@ -24,6 +24,9 @@ public class ItemController implements CrudController<Item> {
 
 	@Override
 	public List<Item> readAll() {
+
+//		BUG = THE FUNCTION DOES NOT RETURN THE ITEM ROWS IN STRING FORM BUT AS A MEMORY LOCATION - NEEDS TO BE FIXED
+
 		List<Item> items = itemService.readAll();
 		for (Item item : items) {
 			LOGGER.info(item.toString());
