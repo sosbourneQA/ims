@@ -34,7 +34,7 @@ public class ItemDaoMysql implements Dao<Item> {
 
 	Item itemFromResultSet(ResultSet resultSet) throws SQLException {
 		Long id = resultSet.getLong("id");
-		String name = resultSet.getString("first_name");
+		String name = resultSet.getString("name");
 		double price = resultSet.getDouble("price");
 		return new Item(id, name, price);
 	}
@@ -101,15 +101,15 @@ public class ItemDaoMysql implements Dao<Item> {
 	@Override
 	public Item update(Item item) {
 		// TODO Auto-generated method stub
-		try(Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("update items set name ='" + item.getName() + "', price = '" + item.getPrice() + 
-					"' where id =" item.getId());
+			statement.executeUpdate("update items set name ='" + item.getName() + "', price = '" + item.getPrice()
+					+ "' where id =" + item.getId());
 			return readItem(item.getId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
-			LOGGER.error(e.getMessage()); 
-		} 
+			LOGGER.error(e.getMessage());
+		}
 		return null;
 	}
 

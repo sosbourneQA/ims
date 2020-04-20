@@ -24,12 +24,11 @@ public class ItemController implements CrudController<Item> {
 
 	@Override
 	public List<Item> readAll() {
-//		 TODO Auto-generated method stub
-		List<Item> customers = itemService.readAll();
+		List<Item> items = itemService.readAll();
 		for (Item item : items) {
 			LOGGER.info(item.toString());
 		}
-		return null;
+		return items;
 	}
 
 	@Override
@@ -38,10 +37,10 @@ public class ItemController implements CrudController<Item> {
 		LOGGER.info("Please enter an item name");
 		String name = getInput();
 		LOGGER.info("Please enter price");
-		String p = getInput();
-		double price = Double.parseDouble(p);
+		double price = Double.parseDouble(getInput());
 		Item item = itemService.create(new Item(name, price));
-		return null;
+		LOGGER.info("Item created");
+		return item;
 	}
 
 	@Override
@@ -53,7 +52,7 @@ public class ItemController implements CrudController<Item> {
 		String name = getInput();
 		LOGGER.info("please enter a price");
 		double price = Double.valueOf(getInput());
-		Item item = itemService.update(new Item(name, price));
+		Item item = itemService.update(new Item(id, name, price));
 		LOGGER.info("Item Updated");
 		return item;
 	}
