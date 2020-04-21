@@ -1,10 +1,18 @@
 package com.qa.ims.persistence.dao;
 
-import java.util.List;
+import java.awt.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+import com.qa.ims.persistence.domain.Order;
+
+//import java.lang.System.Logger;
 
 public class OrderDaoMysql implements Dao<Order> {
 
@@ -26,10 +34,31 @@ public class OrderDaoMysql implements Dao<Order> {
 		this.password = password;
 	}
 
+	Order orderFromResultSet(ResultSet resultSet) throws SQLException {
+		Long orderId = resultSet.getLong("order_id");
+		Long customerId = resultSet.getLong("customer_id");
+		String date = resultSet.getString("date");
+		double total = resultSet.getDouble("total_price");
+		return new Order(orderId, customerId, date, total);
+	}
+
 	@Override
 	public List<Order> readAll() {
 		// TODO Auto-generated method stub
-		return null;
+
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery("select * from orders");) {
+			ArrayList<Order> orders = new ArrayList<>();
+			while (resultSet.next()) {
+				orders.add(orderFromResultSet(resultSet));
+			}
+			return orders;
+		} catch (SQLException e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
+		return new ArrayList<>();
 	}
 
 	@Override
@@ -47,6 +76,14 @@ public class OrderDaoMysql implements Dao<Order> {
 	@Override
 	public void delete(long id) {
 		// TODO Auto-generated method stub
+
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement statement = connection.createStatement();) {
+			statement.executeUpdate("delete from orders where id = " + id);
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
 
 	}
 
