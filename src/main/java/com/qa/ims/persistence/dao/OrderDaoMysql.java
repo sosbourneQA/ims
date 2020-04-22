@@ -37,9 +37,8 @@ public class OrderDaoMysql implements Dao<Order> {
 	Order orderFromResultSet(ResultSet resultSet) throws SQLException {
 		Long orderId = resultSet.getLong("order_id");
 		Long customerId = resultSet.getLong("customer_id");
-		String date = resultSet.getString("date");
 		double total = resultSet.getDouble("total_price");
-		return new Order(orderId, customerId, date, total);
+		return new Order(orderId, customerId, total);
 	}
 
 	@Override

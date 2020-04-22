@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
+import com.qa.ims.persistence.domain.Order;
 import com.qa.ims.services.CrudServices;
 import com.qa.ims.utils.Utils;
 
@@ -39,7 +39,23 @@ public class OrderController implements CrudController<Order> {
 	@Override
 	public Order create() {
 		// TODO Auto-generated method stub
-		return null;
+
+		Long customer_id = null;
+		double total = 0;
+
+		do {
+			try {
+				LOGGER.info("please enter you customer id");
+				customer_id = Long.valueOf(getInput());
+			} catch (NullPointerException e) {
+				LOGGER.info("please inter an integer");
+			}
+		} while (customer_id == null || customer_id < 0);
+
+		Order order = orderService.create(new Order(customer_id, total));
+		LOGGER.info("order created");
+		return order;
+
 	}
 
 	@Override

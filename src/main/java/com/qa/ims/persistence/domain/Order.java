@@ -7,16 +7,14 @@ public class Order {
 	private String date;
 	private double total;
 
-	public Order(Long customerId, String date, double total) {
+	public Order(Long customerId, double total) {
 		this.customerId = customerId;
-		this.date = date;
 		this.total = total;
 	}
 
-	public Order(Long orderId, Long customerId, String date, double total) {
+	public Order(Long orderId, Long customerId, double total) {
 		this.orderId = orderId;
 		this.customerId = customerId;
-		this.date = date;
 		this.total = total;
 	}
 
@@ -36,14 +34,6 @@ public class Order {
 		this.customerId = customerId;
 	}
 
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 	public double getTotal() {
 		return total;
 	}
@@ -54,7 +44,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "order id:" + orderId + " customer id:" + customerId + " date:" + date + " total price:£" + total;
+		return "order id:" + orderId + " customer id:" + customerId + " total price:£" + total;
 	}
 
 }
