@@ -4,7 +4,6 @@ public class Order {
 
 	private Long orderId;
 	private Long customerId;
-	private String date;
 	private double total;
 
 	public Order(Long customerId, double total) {

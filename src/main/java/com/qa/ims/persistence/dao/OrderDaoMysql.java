@@ -60,15 +60,59 @@ public class OrderDaoMysql implements Dao<Order> {
 		return new ArrayList<>();
 	}
 
-	@Override
-	public Order create(Order t) {
-		// TODO Auto-generated method stub
+	public Order readLatest() {
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM orders ORDER BY id DESC LIMIT 1");) {
+			resultSet.next();
+			return orderFromResultSet(resultSet);
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
 		return null;
 	}
 
 	@Override
-	public Order update(Order t) {
+	public Order create(Order order) {
 		// TODO Auto-generated method stub
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement statement = connection.createStatement();) {
+			statement.executeUpdate("insert into orders(customer_id, total) values('" + order.getCustomerId() + "','"
+					+ order.getTotal() + "')");
+			return readLatest();
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
+
+	public Order readOrder(Long id) {
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM order where id = " + id);) {
+			resultSet.next();
+			return orderFromResultSet(resultSet);
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
+
+	@Override
+	public Order update(Order order) {
+		// TODO Auto-generated method stub
+		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
+				Statement statement = connection.createStatement();) {
+			statement.executeUpdate("update customers set customer_id ='" + order.getOrderId() + "', total ='"
+					+ order.getTotal() + "' where id =" + order.getOrderId());
+			return readOrder(order.getOrderId());
+		} catch (Exception e) {
+			LOGGER.debug(e.getStackTrace());
+			LOGGER.error(e.getMessage());
+		}
 		return null;
 	}
 

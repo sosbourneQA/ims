@@ -43,14 +43,8 @@ public class OrderController implements CrudController<Order> {
 		Long customer_id = null;
 		double total = 0;
 
-		do {
-			try {
-				LOGGER.info("please enter you customer id");
-				customer_id = Long.valueOf(getInput());
-			} catch (NullPointerException e) {
-				LOGGER.info("please inter an integer");
-			}
-		} while (customer_id == null || customer_id < 0);
+		LOGGER.info("please enter the customer id");
+		customer_id = Long.valueOf(getInput());
 
 		Order order = orderService.create(new Order(customer_id, total));
 		LOGGER.info("order created");
@@ -60,8 +54,24 @@ public class OrderController implements CrudController<Order> {
 
 	@Override
 	public Order update() {
-		// TODO Auto-generated method stub
-		return null;
+
+		Long customer_id = null;
+		Long order_id = null;
+		double total = 0;
+
+		LOGGER.info("please enter the customer id");
+		customer_id = Long.valueOf(getInput());
+
+		LOGGER.info("please enter the id of the order you would like to update");
+		order_id = Long.valueOf(getInput());
+
+		LOGGER.info("please enter the new cost of the order you would like to update");
+		total = Double.valueOf(getInput());
+
+		Order order = orderService.create(new Order(order_id, customer_id, total));
+		LOGGER.info("order created");
+		return order;
+
 	}
 
 	//
