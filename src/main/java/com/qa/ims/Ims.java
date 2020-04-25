@@ -15,12 +15,15 @@ import com.qa.ims.controller.CrudController;
 import com.qa.ims.controller.CustomerController;
 import com.qa.ims.controller.ItemController;
 import com.qa.ims.controller.OrderController;
+import com.qa.ims.controller.OrderLineController;
 import com.qa.ims.persistence.dao.CustomerDaoMysql;
 import com.qa.ims.persistence.dao.ItemDaoMysql;
 import com.qa.ims.persistence.dao.OrderDaoMysql;
+import com.qa.ims.persistence.dao.OrderLineDaoMysql;
 import com.qa.ims.persistence.domain.Domain;
 import com.qa.ims.services.CustomerServices;
 import com.qa.ims.services.ItemServices;
+import com.qa.ims.services.OrderLineServices;
 import com.qa.ims.services.OrderServices;
 import com.qa.ims.utils.Utils;
 
@@ -60,7 +63,10 @@ public class Ims {
 					new OrderServices(new OrderDaoMysql(username, password)));
 			doAction(orderController, action);
 			break;
-		case OrderLine:
+		case ORDERLINE:
+			OrderLineController orderLineController = new OrderLineController(
+					new OrderLineServices(new OrderLineDaoMysql(username, password)));
+			doAction(orderLineController, action);
 			break;
 		case STOP:
 			break;

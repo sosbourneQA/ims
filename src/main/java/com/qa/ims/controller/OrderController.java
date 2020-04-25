@@ -14,7 +14,7 @@ public class OrderController implements CrudController<Order> {
 
 	private CrudServices<Order> orderService;
 
-	public OrderController(CrudServices<Order> OrderService) {
+	public OrderController(CrudServices<Order> orderService) {
 		this.orderService = orderService;
 	}
 
@@ -59,7 +59,7 @@ public class OrderController implements CrudController<Order> {
 		Long order_id = null;
 		double total = 0;
 
-		LOGGER.info("please enter the customer id");
+		LOGGER.info("please enter the customer id of the order you want to update");
 		customer_id = Long.valueOf(getInput());
 
 		LOGGER.info("please enter the id of the order you would like to update");
@@ -68,8 +68,8 @@ public class OrderController implements CrudController<Order> {
 		LOGGER.info("please enter the new cost of the order you would like to update");
 		total = Double.valueOf(getInput());
 
-		Order order = orderService.create(new Order(order_id, customer_id, total));
-		LOGGER.info("order created");
+		Order order = orderService.update(new Order(order_id, customer_id, total));
+		LOGGER.info("order updated");
 		return order;
 
 	}
