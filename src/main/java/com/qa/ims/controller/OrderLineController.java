@@ -57,7 +57,7 @@ public class OrderLineController implements CrudController<OrderLine> {
 		Long order_id = Long.valueOf(getInput());
 		LOGGER.info("what is the id of the item in the order line?");
 		Long item_id = Long.valueOf(getInput());
-		LOGGER.info("what is the new quantity of the item that you would like to purachse?");
+		LOGGER.info("what is the updated quantity of the item that you would like to purachse?");
 		Long quantity = Long.valueOf(getInput());
 		OrderLine orderLine = orderLineService.update(new OrderLine(order_line_id, order_id, item_id, quantity));
 		LOGGER.info("order line updated");
