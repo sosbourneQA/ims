@@ -106,7 +106,7 @@ public class OrderDaoMysql implements Dao<Order> {
 		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("UPDATE orders SET customer_id ='" + order.getOrderId() + "', total_price ='"
+			statement.executeUpdate("UPDATE orders SET customer_id ='" + order.getCustomerId() + "', total_price ='"
 					+ order.getTotal() + "' WHERE order_id =" + order.getOrderId());
 			return readOrder(order.getOrderId());
 		} catch (Exception e) {
@@ -122,7 +122,7 @@ public class OrderDaoMysql implements Dao<Order> {
 
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("DELETE FROM orders WHERE id = " + id);
+			statement.executeUpdate("DELETE FROM orders WHERE order_id = " + id);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

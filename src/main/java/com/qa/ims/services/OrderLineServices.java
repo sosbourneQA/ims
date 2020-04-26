@@ -32,9 +32,9 @@ public class OrderLineServices implements LineServices<OrderLine> {
 	}
 
 	@Override
-	public void delete(Long order_id, Long item_id) {
+	public void delete(Long line_id) {
 		// TODO Auto-generated method stub
-		orderLineDao.delete(order_id, item_id);
+		orderLineDao.delete(line_id);
 
 	}
 

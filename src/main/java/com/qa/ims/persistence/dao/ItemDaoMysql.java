@@ -76,7 +76,7 @@ public class ItemDaoMysql implements Dao<Item> {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate(
-					"insert into items(name, price) values('" + item.getName() + "','" + item.getPrice() + "')");
+					"INSERT INTO items(name, price) VALUES('" + item.getName() + "','" + item.getPrice() + "')");
 			return readLatest();
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -88,7 +88,7 @@ public class ItemDaoMysql implements Dao<Item> {
 	public Item readItem(Long id) {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT FROM items where id = " + id);) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM items where id = " + id);) {
 			resultSet.next();
 			return itemFromResultSet(resultSet);
 		} catch (Exception e) {
@@ -103,8 +103,8 @@ public class ItemDaoMysql implements Dao<Item> {
 		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("update items set name ='" + item.getName() + "', price = '" + item.getPrice()
-					+ "' where id =" + item.getId());
+			statement.executeUpdate("UPDATE items SET name ='" + item.getName() + "', price = " + item.getPrice()
+					+ " WHERE id =" + item.getId());
 			return readItem(item.getId());
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
@@ -118,7 +118,7 @@ public class ItemDaoMysql implements Dao<Item> {
 		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate("delete from items where id = " + id);
+			statement.executeUpdate("DELETE FROM items WHERE id = " + id);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

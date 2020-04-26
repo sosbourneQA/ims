@@ -67,11 +67,9 @@ public class OrderLineController implements CrudController<OrderLine> {
 	@Override
 	public void delete() {
 		// TODO Auto-generated method stub
-		LOGGER.info("Please enter the order id of the order line you would like to delete");
-		Long order_id = Long.valueOf(getInput());
-		LOGGER.info("Please enter the item id of the order line you would like to delete");
-		Long item_id = Long.valueOf(getInput());
-		orderLineService.delete(order_id, item_id);
+		LOGGER.info("Please enter the id of the order line you would like to delete");
+		Long line_id = Long.valueOf(getInput());
+		orderLineService.delete(line_id);
 		LOGGER.info("order line deleted");
 
 	}

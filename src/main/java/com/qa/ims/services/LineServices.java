@@ -10,6 +10,6 @@ public interface LineServices<T> {
 
 	T update(T t);
 
-	void delete(Long order_id, Long item_id);
+	void delete(Long line_id);
 
 }

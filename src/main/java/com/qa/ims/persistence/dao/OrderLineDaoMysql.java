@@ -85,8 +85,9 @@ public class OrderLineDaoMysql implements LineDao<OrderLine> {
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("SELECT * FROM order_line where order_line_id = " + id);) {
-			resultSet.next();
-			return orderLineFromResultSet(resultSet);
+
+//			line.add(orderLineFromResultSet(resultSet));
+
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());
@@ -110,12 +111,11 @@ public class OrderLineDaoMysql implements LineDao<OrderLine> {
 	}
 
 	@Override
-	public void delete(long order_id, long item_id) {
+	public void delete(long line_id) {
 		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
-			statement.executeUpdate(
-					"DELETE FROM order_line WHERE (order_id = " + order_id + "AND item_id" + item_id + ")");
+			statement.executeUpdate("DELETE FROM order_line WHERE order_id = " + line_id);
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

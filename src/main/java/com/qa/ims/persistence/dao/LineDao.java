@@ -10,5 +10,5 @@ public interface LineDao<T> {
 
 	T update(T t);
 
-	void delete(long order_id, long item_id);
+	void delete(long line_id);
 }
