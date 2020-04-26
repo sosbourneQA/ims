@@ -29,7 +29,20 @@ import com.qa.ims.utils.Utils;
 
 public class Ims {
 
+	Runner runner = new Runner();
+
 	public static final Logger LOGGER = Logger.getLogger(Ims.class);
+
+//	public void logIn() {
+//		LOGGER.info("What is your username");
+//		username = Utils.getInput();
+//		LOGGER.info("What is your password");
+//		password = Utils.getInput();
+//		init(username, password);
+//	}
+//
+//	String username = "";
+//	String password = "";
 
 	public void imsSystem() {
 
@@ -92,6 +105,7 @@ public class Ims {
 			crudController.delete();
 			break;
 		case RETURN:
+			imsSystem();
 			break;
 		default:
 			break;

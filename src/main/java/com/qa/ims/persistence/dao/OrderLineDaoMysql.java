@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -41,10 +42,14 @@ public class OrderLineDaoMysql implements LineDao<OrderLine> {
 
 	@Override
 	public List<OrderLine> readAll(Long id) {
-		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
-				ResultSet resultSet = statement.executeQuery("SELECT * FROM order_line WHERE order_line__id =" + id);) {
+				ResultSet resultSet = statement.executeQuery("SELECT * FROM order_line WHERE order_line_id =" + id);) {
+			ArrayList<OrderLine> orderLine = new ArrayList<>();
+			while (resultSet.next()) {
+				orderLine.add(orderLineFromResultSet(resultSet));
+			}
+			return orderLine;
 		} catch (Exception e) {
 			LOGGER.debug(e.getStackTrace());
 			LOGGER.error(e.getMessage());

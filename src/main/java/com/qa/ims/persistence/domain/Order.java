@@ -4,14 +4,14 @@ public class Order {
 
 	private Long orderId;
 	private Long customerId;
-	private double total;
+	private Double total;
 
-	public Order(Long customerId, double total) {
+	public Order(Long customerId, Double total) {
 		this.customerId = customerId;
 		this.total = total;
 	}
 
-	public Order(Long orderId, Long customerId, double total) {
+	public Order(Long orderId, Long customerId, Double total) {
 		this.orderId = orderId;
 		this.customerId = customerId;
 		this.total = total;
@@ -37,13 +37,50 @@ public class Order {
 		return total;
 	}
 
-	public void setTotal(double total) {
+	public void setTotal(Double total) {
 		this.total = total;
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+		result = prime * result + ((total == null) ? 0 : total.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Order other = (Order) obj;
+		if (customerId == null) {
+			if (other.customerId != null)
+				return false;
+		} else if (!customerId.equals(other.customerId))
+			return false;
+		if (orderId == null) {
+			if (other.orderId != null)
+				return false;
+		} else if (!orderId.equals(other.orderId))
+			return false;
+		if (total == null) {
+			if (other.total != null)
+				return false;
+		} else if (!total.equals(other.total))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
-		return "order id:" + orderId + " customer id:" + customerId + " total price:£" + total;
+		return "order_id:" + orderId + " customer_id:" + customerId + " total:£" + total;
 	}
 
 }

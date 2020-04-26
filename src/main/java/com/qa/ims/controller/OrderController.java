@@ -48,7 +48,7 @@ public class OrderController implements CrudController<Order> {
 		// TODO Auto-generated method stub
 
 		Long customer_id = null;
-		double total = 0;
+		Double total = 0.0;
 
 		LOGGER.info("please enter the customer id");
 		customer_id = Long.valueOf(getInput());
