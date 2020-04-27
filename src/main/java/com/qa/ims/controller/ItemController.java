@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.qa.ims.Ims;
 import com.qa.ims.persistence.domain.Item;
 import com.qa.ims.services.CrudServices;
 import com.qa.ims.utils.Utils;
@@ -31,7 +32,13 @@ public class ItemController implements CrudController<Item> {
 		for (Item item : items) {
 			LOGGER.info(item.toString());
 		}
-		return items;
+		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
+		String answer = getInput();
+		if (answer.toLowerCase().equals("return")) {
+			Ims newIms = new Ims();
+			newIms.imsSystem();
+		}
+		return null;
 	}
 
 	@Override
@@ -41,9 +48,15 @@ public class ItemController implements CrudController<Item> {
 		String name = getInput();
 		LOGGER.info("Please enter price");
 		double price = Double.parseDouble(getInput());
-		Item item = itemService.create(new Item(name, price));
+		itemService.create(new Item(name, price));
 		LOGGER.info("Item created");
-		return item;
+		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
+		String answer = getInput();
+		if (answer.toLowerCase().equals("return")) {
+			Ims newIms = new Ims();
+			newIms.imsSystem();
+		}
+		return null;
 	}
 
 	@Override
@@ -55,9 +68,15 @@ public class ItemController implements CrudController<Item> {
 		String name = getInput();
 		LOGGER.info("please enter a price");
 		double price = Double.valueOf(getInput());
-		Item item = itemService.update(new Item(id, name, price));
+		itemService.update(new Item(id, name, price));
 		LOGGER.info("Item Updated");
-		return item;
+		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
+		String answer = getInput();
+		if (answer.toLowerCase().equals("return")) {
+			Ims newIms = new Ims();
+			newIms.imsSystem();
+		}
+		return null;
 	}
 
 	@Override
@@ -66,7 +85,12 @@ public class ItemController implements CrudController<Item> {
 		LOGGER.info("please enter the id of the item you would like to delete");
 		Long id = Long.valueOf(getInput());
 		itemService.delete(id);
-		LOGGER.info("item deleted");
+		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
+		String answer = getInput();
+		if (answer.toLowerCase().equals("return")) {
+			Ims newIms = new Ims();
+			newIms.imsSystem();
+		}
 
 	}
 
