@@ -1,4 +1,4 @@
-Coverage: SonarQube-47.7%
+Coverage: SonarQube- 39.4%, Junit- 52.9%
 # Inventory Management System Project - QA Consulting 
 
 For this project I used Google Cloud Platform (GCP), MySQL database, SonarQube, Nexus, Java, JUnit and Mockito to create an inventory management system. It was written in Java and packaed using the CI Server Jenkins.
@@ -23,7 +23,7 @@ If not already in place:
 
 ## Running the tests
 
-The tests were written using Mockito and Junit and cover most of the customer, items and orders functions.
+The tests were written using Mockito and Junit and cover the customer, items and order classes for the controllers, domains and services.
 
 ## Deployment
 
