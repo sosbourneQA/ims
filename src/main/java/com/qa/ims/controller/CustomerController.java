@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.qa.ims.Ims;
 import com.qa.ims.persistence.domain.Customer;
 import com.qa.ims.services.CrudServices;
 import com.qa.ims.utils.Utils;
@@ -35,7 +36,13 @@ public class CustomerController implements CrudController<Customer> {
 		for (Customer customer : customers) {
 			LOGGER.info(customer.toString());
 		}
-		return customers;
+		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
+		String answer = getInput();
+		if (answer.toLowerCase().equals("return")) {
+			Ims newIms = new Ims();
+			newIms.imsSystem();
+		}
+		return null;
 	}
 
 	/**
@@ -47,9 +54,15 @@ public class CustomerController implements CrudController<Customer> {
 		String firstName = getInput();
 		LOGGER.info("Please enter a surname");
 		String surname = getInput();
-		Customer customer = customerService.create(new Customer(firstName, surname));
+		customerService.create(new Customer(firstName, surname));
 		LOGGER.info("Customer created");
-		return customer;
+		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
+		String answer = getInput();
+		if (answer.toLowerCase().equals("return")) {
+			Ims newIms = new Ims();
+			newIms.imsSystem();
+		}
+		return null;
 	}
 
 	/**
@@ -63,9 +76,15 @@ public class CustomerController implements CrudController<Customer> {
 		String firstName = getInput();
 		LOGGER.info("Please enter a surname");
 		String surname = getInput();
-		Customer customer = customerService.update(new Customer(id, firstName, surname));
+		customerService.update(new Customer(id, firstName, surname));
 		LOGGER.info("Customer Updated");
-		return customer;
+		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
+		String answer = getInput();
+		if (answer.toLowerCase().equals("return")) {
+			Ims newIms = new Ims();
+			newIms.imsSystem();
+		}
+		return null;
 	}
 
 	/**
@@ -77,6 +96,12 @@ public class CustomerController implements CrudController<Customer> {
 		Long id = Long.valueOf(getInput());
 		customerService.delete(id);
 		LOGGER.info("customer deleted");
+		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
+		String answer = getInput();
+		if (answer.toLowerCase().equals("return")) {
+			Ims newIms = new Ims();
+			newIms.imsSystem();
+		}
 	}
 
 }
