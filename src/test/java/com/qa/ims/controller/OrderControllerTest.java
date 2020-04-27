@@ -74,12 +74,12 @@ public class OrderControllerTest {
 	 * Delete doesn't return anything, so we can just verify that it calls the
 	 * delete method
 	 */
-//	@Test
-//	public void deleteTest() {
-//		Long id = 1L;
-//		Mockito.doReturn(id.toString()).when(orderController).getInput();
-//		orderController.delete();
-//		Mockito.verify(orderServices, Mockito.times(1)).delete(1L);
-//	}
+	@Test
+	public void deleteTest() {
+		Long id = 1L;
+		Mockito.doReturn(id.toString()).when(orderController).getInput();
+		orderController.delete();
+		Mockito.verify(orderServices, Mockito.times(1)).delete(1L);
+	}
 
 }

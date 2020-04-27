@@ -26,19 +26,11 @@ public class ItemController implements CrudController<Item> {
 	@Override
 	public List<Item> readAll() {
 
-//		BUG = THE FUNCTION DOES NOT RETURN THE ITEM ROWS IN STRING FORM BUT AS A MEMORY LOCATION - NEEDS TO BE FIXED
-
 		List<Item> items = itemService.readAll();
 		for (Item item : items) {
 			LOGGER.info(item.toString());
 		}
-		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
-		String answer = getInput();
-		if (answer.toLowerCase().equals("return")) {
-			Ims newIms = new Ims();
-			newIms.imsSystem();
-		}
-		return null;
+		return items;
 	}
 
 	@Override
@@ -48,7 +40,7 @@ public class ItemController implements CrudController<Item> {
 		String name = getInput();
 		LOGGER.info("Please enter price");
 		double price = Double.parseDouble(getInput());
-		itemService.create(new Item(name, price));
+		Item item = itemService.create(new Item(name, price));
 		LOGGER.info("Item created");
 		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
 		String answer = getInput();
@@ -56,7 +48,7 @@ public class ItemController implements CrudController<Item> {
 			Ims newIms = new Ims();
 			newIms.imsSystem();
 		}
-		return null;
+		return item;
 	}
 
 	@Override
@@ -68,7 +60,7 @@ public class ItemController implements CrudController<Item> {
 		String name = getInput();
 		LOGGER.info("please enter a price");
 		double price = Double.valueOf(getInput());
-		itemService.update(new Item(id, name, price));
+		Item item = itemService.update(new Item(id, name, price));
 		LOGGER.info("Item Updated");
 		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
 		String answer = getInput();
@@ -76,7 +68,7 @@ public class ItemController implements CrudController<Item> {
 			Ims newIms = new Ims();
 			newIms.imsSystem();
 		}
-		return null;
+		return item;
 	}
 
 	@Override

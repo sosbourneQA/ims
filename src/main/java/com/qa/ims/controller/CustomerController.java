@@ -36,13 +36,13 @@ public class CustomerController implements CrudController<Customer> {
 		for (Customer customer : customers) {
 			LOGGER.info(customer.toString());
 		}
-		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
-		String answer = getInput();
-		if (answer.toLowerCase().equals("return")) {
-			Ims newIms = new Ims();
-			newIms.imsSystem();
-		}
-		return null;
+//		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
+//		String answer = getInput();
+//		if (answer.toLowerCase().equals("return")) {
+//			Ims newIms = new Ims();
+//			newIms.imsSystem();
+//		}
+		return customers;
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class CustomerController implements CrudController<Customer> {
 		String firstName = getInput();
 		LOGGER.info("Please enter a surname");
 		String surname = getInput();
-		customerService.create(new Customer(firstName, surname));
+		Customer customer = customerService.create(new Customer(firstName, surname));
 		LOGGER.info("Customer created");
 		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
 		String answer = getInput();
@@ -62,7 +62,7 @@ public class CustomerController implements CrudController<Customer> {
 			Ims newIms = new Ims();
 			newIms.imsSystem();
 		}
-		return null;
+		return customer;
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class CustomerController implements CrudController<Customer> {
 		String firstName = getInput();
 		LOGGER.info("Please enter a surname");
 		String surname = getInput();
-		customerService.update(new Customer(id, firstName, surname));
+		Customer customer = customerService.update(new Customer(id, firstName, surname));
 		LOGGER.info("Customer Updated");
 		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
 		String answer = getInput();
@@ -84,7 +84,7 @@ public class CustomerController implements CrudController<Customer> {
 			Ims newIms = new Ims();
 			newIms.imsSystem();
 		}
-		return null;
+		return customer;
 	}
 
 	/**
