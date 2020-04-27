@@ -1,15 +1,15 @@
 Coverage: SonarQube- 39.4%, Junit- 52.9%
 # Inventory Management System Project - QA Consulting 
 
-For this project I used Google Cloud Platform (GCP), MySQL database, SonarQube, Nexus, Java, JUnit and Mockito to create an inventory management system. It was written in Java and packaed using the CI Server Jenkins.
+For this project I used Google Cloud Platform (GCP), MySQL database, SonarQube, Nexus, Java, JUnit and Mockito to create an inventory management system. The codebase was written in Java and the project packaged and deployed using the CI Server Jenkins.
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-1. Fork and clone the repo.
-2. Create a Maven project in Eclpise.
-3. Change the MySQL links.
+1. Fork and clone the repo onto your local hard drive.
+2. Open the folder in your IDE as a Maven Project.
+3. Replace the MySQL links in the IMS and the DAO classes for order, customer, item and order line with ones that point to your MySQL instance. This requires the External IP of the instance.
 
 ### Prerequisites
 
@@ -27,7 +27,7 @@ The tests were written using Mockito and Junit and cover the customer, items and
 
 ## Deployment
 
-After the project has been forked and opened in the IDE. Go to the project folder which the project is located and open the command window in the folder. You should then be pointing to the location where the project is in your command window. Preform the following command:
+After the project has been forked, open the folder in your IDE, I used Eclipse which worked well. Go to the folder where the project is located and open the command window in the folder. This will mean that you are pointing to the location of project is in your command window. Preform the following command to create the fat JAR, which is a JAR file with all the dependancies merged into it:
 
          mvn clean install
 
@@ -50,7 +50,7 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 
-* **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
+* **Chris Perrins** - *provided the initial codebase* - [christophperrins](https://github.com/christophperrins)
 * **Luke Smyth-Osbourne** - *Continued from the initial forking to add a functionality for items, orders and order lines* - [sosbourneQA](https://github.com/sosbourneQA)
 
 
