@@ -1,72 +1,48 @@
-Coverage: 34%
+Coverage: SonarQube-47.7%
 # Inventory Management System Project - QA Consulting 
 
-One Paragraph of project description goes here
+For this project I used Google Cloud Platform (GCP), MySQL database, SonarQube, Nexus, Java, JUnit and Mockito to create an inventory management system. It was written in Java and packaed using the CI Server Jenkins.
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+1. Fork and clone the repo.
+2. Create a Maven project in Eclpise.
+3. Change the MySQL links.
+
 ### Prerequisites
 
-What things you need to install the software and how to install them
+If not already in place:
 
-```
-Give examples
-```
+1. Install Java, Maven and Git.
+2. Set up a MySQL instance
 
-### Installing
 
-A step by step series of examples that tell you how to get a development env running
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
-Explain how to run the automated tests for this system. Break down into which tests and what they do
-
-### Unit Tests 
-
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### Integration Tests 
-Explain what these tests test, why and how to run them
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+The tests were written using Mockito and Junit and cover most of the customer, items and orders functions.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+After the project has been forked and opened in the IDE. Go to the project folder which the project is located and open the command window in the folder. You should then be pointing to the location where the project is in your command window. Preform the following command
+
+mvn clean install
 
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management
+* [Jenkins] - CI Pipeline Tool
+* [Eclipse] - IDE
+* [Java] - Code Base
+* [JUnit] - Testing Tool
+* [Mockito] - Testing Tool
+* [Google Cloud Platform] - Cloud Host
+* [SonarQube] - Static Analysis Tool
+* [Nexus] - Artefact Repository
+* [GitHub] - Version Control System
 
 ## Versioning
 
@@ -86,7 +62,6 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* **Chris Perrins**  - [christophperrins](https://github.com/christophperrins) made the initial code base.
+* **Nicholas Johnson**  - [nicholasjohnson](https://github.com/nickrstewarttds) taught the skills used in this project.
 
