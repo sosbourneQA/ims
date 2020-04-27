@@ -32,13 +32,13 @@ public class OrderController implements CrudController<Order> {
 		for (Order order : orders) {
 			LOGGER.info(order.toString());
 		}
-		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
-		String answer = getInput();
-		if (answer.toLowerCase().equals("return")) {
-			Ims newIms = new Ims();
-			newIms.imsSystem();
-		}
-		return null;
+//		LOGGER.info("type 'RETURN' if you would like to go back to the options menu");
+//		String answer = getInput();
+//		if (answer.toLowerCase().equals("return")) {
+//			Ims newIms = new Ims();
+//			newIms.imsSystem();
+//		}
+		return orders;
 	}
 
 	// user creates a new order
