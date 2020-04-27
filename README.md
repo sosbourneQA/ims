@@ -16,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 If not already in place:
 
 1. Install Java, Maven and Git.
-2. Set up a MySQL instance
+2. Set up a MySQL instance. This can be done locally by installing SQL, or on Google cloud Platform which is how I chose to do it. For a guide on how to set up an instance on GCP, please click on this [link](https://cloud.google.com/sql/docs/mysql/quickstart).
 
 
 
