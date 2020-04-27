@@ -27,9 +27,9 @@ The tests were written using Mockito and Junit and cover most of the customer, i
 
 ## Deployment
 
-After the project has been forked and opened in the IDE. Go to the project folder which the project is located and open the command window in the folder. You should then be pointing to the location where the project is in your command window. Preform the following command
+After the project has been forked and opened in the IDE. Go to the project folder which the project is located and open the command window in the folder. You should then be pointing to the location where the project is in your command window. Preform the following command:
 
-mvn clean install
+         mvn clean install
 
 ## Built With
 
