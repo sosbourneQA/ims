@@ -43,8 +43,6 @@ public class OrderDaoMysql implements Dao<Order> {
 
 	@Override
 	public List<Order> readAll() {
-		// TODO Auto-generated method stub
-
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("select * from orders");) {
@@ -75,7 +73,6 @@ public class OrderDaoMysql implements Dao<Order> {
 
 	@Override
 	public Order create(Order order) {
-		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("INSERT INTO orders(customer_id, total_price) values('" + order.getCustomerId()
@@ -103,7 +100,6 @@ public class OrderDaoMysql implements Dao<Order> {
 
 	@Override
 	public Order update(Order order) {
-		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("UPDATE orders SET customer_id ='" + order.getCustomerId() + "', total_price ='"
@@ -118,8 +114,6 @@ public class OrderDaoMysql implements Dao<Order> {
 
 	@Override
 	public void delete(long id) {
-		// TODO Auto-generated method stub
-
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("DELETE FROM orders WHERE order_id = " + id);

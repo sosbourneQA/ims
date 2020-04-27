@@ -23,11 +23,8 @@ public class OrderController implements CrudController<Order> {
 		return Utils.getInput();
 	}
 
-	// lists all orders
-
 	@Override
 	public List<Order> readAll() {
-		// TODO Auto-generated method stub
 		List<Order> orders = orderService.readAll();
 		for (Order order : orders) {
 			LOGGER.info(order.toString());
@@ -41,12 +38,8 @@ public class OrderController implements CrudController<Order> {
 		return orders;
 	}
 
-	// user creates a new order
-
 	@Override
 	public Order create() {
-		// TODO Auto-generated method stub
-
 		Long customer_id = null;
 		Double total = 0.0;
 
@@ -93,12 +86,8 @@ public class OrderController implements CrudController<Order> {
 
 	}
 
-	//
-
 	@Override
 	public void delete() {
-		// TODO Auto-generated method stub
-
 		LOGGER.info("PLease enter the id of the order you would like to delete?");
 		orderService.delete(Long.valueOf(getInput()));
 		LOGGER.info("order deleted");

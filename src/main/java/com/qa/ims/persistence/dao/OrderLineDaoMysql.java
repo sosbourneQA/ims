@@ -73,7 +73,6 @@ public class OrderLineDaoMysql implements LineDao<OrderLine> {
 
 	@Override
 	public OrderLine create(OrderLine t) {
-		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("INSERT INTO order_line(order_id, item_id, quantity) values('" + t.getOrderId()
@@ -102,7 +101,6 @@ public class OrderLineDaoMysql implements LineDao<OrderLine> {
 
 	@Override
 	public OrderLine update(OrderLine t) {
-		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("UPDATE order_line SET order_id =" + t.getOrderId() + ", item_id = " + t.getItemId()
@@ -117,7 +115,6 @@ public class OrderLineDaoMysql implements LineDao<OrderLine> {
 
 	@Override
 	public void delete(long line_id) {
-		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("DELETE FROM order_line WHERE order_id = " + line_id);

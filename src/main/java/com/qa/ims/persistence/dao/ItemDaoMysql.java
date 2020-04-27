@@ -41,7 +41,6 @@ public class ItemDaoMysql implements Dao<Item> {
 
 	@Override
 	public List<Item> readAll() {
-		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery("select * from items");) {
@@ -72,7 +71,6 @@ public class ItemDaoMysql implements Dao<Item> {
 
 	@Override
 	public Item create(Item item) {
-		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate(
@@ -100,7 +98,6 @@ public class ItemDaoMysql implements Dao<Item> {
 
 	@Override
 	public Item update(Item item) {
-		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("UPDATE items SET name ='" + item.getName() + "', price = " + item.getPrice()
@@ -115,7 +112,6 @@ public class ItemDaoMysql implements Dao<Item> {
 
 	@Override
 	public void delete(long id) {
-		// TODO Auto-generated method stub
 		try (Connection connection = DriverManager.getConnection(jdbcConnectionUrl, username, password);
 				Statement statement = connection.createStatement();) {
 			statement.executeUpdate("DELETE FROM items WHERE id = " + id);

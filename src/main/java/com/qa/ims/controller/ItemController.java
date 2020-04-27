@@ -35,7 +35,6 @@ public class ItemController implements CrudController<Item> {
 
 	@Override
 	public Item create() {
-		// TODO Auto-generated method stub
 		LOGGER.info("Please enter an item name");
 		String name = getInput();
 		LOGGER.info("Please enter price");
@@ -53,7 +52,6 @@ public class ItemController implements CrudController<Item> {
 
 	@Override
 	public Item update() {
-		// TODO Auto-generated method stub
 		LOGGER.info("please enter the id of the item you would like to update");
 		Long id = Long.valueOf(getInput());
 		LOGGER.info("please enter a name");
@@ -73,7 +71,6 @@ public class ItemController implements CrudController<Item> {
 
 	@Override
 	public void delete() {
-		// TODO Auto-generated method stub
 		LOGGER.info("please enter the id of the item you would like to delete");
 		Long id = Long.valueOf(getInput());
 		itemService.delete(id);
