@@ -101,7 +101,7 @@ public class ItemTest {
 	}
 
 	@Test
-	public void nullSurname() {
+	public void nullPrice() {
 		item.setPrice(null);
 		assertFalse(item.equals(other));
 	}
@@ -114,7 +114,7 @@ public class ItemTest {
 	}
 
 	@Test
-	public void otherSurnameDifferent() {
+	public void otherPriceDifferent() {
 		other.setPrice(90.00);
 		assertFalse(item.equals(other));
 	}
