@@ -75,6 +75,8 @@ We use [SemVer](http://semver.org/) for versioning.
 ## Authors
 
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
+* **Luke Smyth-Osbourne** - *Continued from the initial forking to add a functionality for items, orders and order lines* - [sosbourneQA](https://github.com/sosbourneQA)
+
 
 ## License
 
